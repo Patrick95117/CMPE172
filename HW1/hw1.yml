@@ -9,18 +9,18 @@
   tasks:
    - name: ensure apache is running
      service: name=apache2 state=started enabled=yes
-	 notify: start apache service
+     notify: start apache service
    - name: copy local html to apache
      template: src=hw.html dest=/var/www/html/index.html
-	 notify: restart apache service
+     notify: restart apache service
 
    handlers:
     - name: start apache service
-	  service: name=apache2 state=started
+      service: name=apache2 state=started
     - name: stop apache service
-	  service: name=apache2 state=stopped
+      service: name=apache2 state=stopped
     - name: restart apache service
-	  service: name=apache2 state=restarted
-	- name: ensure apache is at the latest version
-	  service: name=apache2 yum=latest
+      service: name=apache2 state=restarted
+    - name: ensure apache is at the latest version
+      service: name=apache2 yum=latest
 ...
